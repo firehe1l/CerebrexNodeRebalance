@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Buff Cerebrex Node Stats -->
+  
+  <!-- Increase MechBandwidth to 30 (from 15) -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName="Apparel_CerebrexNode"]/equippedStatOffsets/MechBandwidth</xpath>
+    <value>
+      <MechBandwidth MayRequire="Ludeon.RimWorld.Biotech">30</MechBandwidth>
+    </value>
+  </Operation>
+
+  <!-- Increase WorkSpeedGlobalOffsetMech to 0.50 (from 0.12) -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName="Apparel_CerebrexNode"]/equippedStatOffsets/WorkSpeedGlobalOffsetMech</xpath>
+    <value>
+      <WorkSpeedGlobalOffsetMech MayRequire="Ludeon.RimWorld.Biotech">0.50</WorkSpeedGlobalOffsetMech>
+    </value>
+  </Operation>
+
+  <!-- Add Supply Drop Ability to the apparel abilities list -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName="Apparel_CerebrexNode"]/apparel/abilities</xpath>
+    <value>
+      <li>Cerebrex_SupplyDrop</li>
+    </value>
+  </Operation>
+
+</Patch>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Cerebrex Node Rebalance</name>
+  <author>Antigravity</author>
+  <packageId>Antigravity.CerebrexRebalance</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>Rebalances the Cerebrex Node to be a true endgame reward.
+  
+Features:
+- Increases Mechanoid Bandwidth to +30
+- Increases Mechanoid Work Speed to +50%
+- Adds "Request Mechanoid Supply Drop" ability
+- Subjugating the mech hive neutralizes the Mechanoid faction
+  </description>
+  <modDependencies>
+    <li>
+      <packageId>Ludeon.RimWorld.Biotech</packageId>
+      <displayName>Biotech</displayName>
+    </li>
+    <li>
+      <packageId>Ludeon.RimWorld.Odyssey</packageId>
+      <displayName>Odyssey</displayName>
+    </li>
+  </modDependencies>
+</ModMetaData>

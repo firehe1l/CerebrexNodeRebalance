@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <AbilityDef>
+    <defName>Cerebrex_SupplyDrop</defName>
+    <label>request mechanoid supply drop</label>
+    <description>Request a drop pod containing mechanoid crafting resources. You can choose between Steel, Plasteel, Components, Advanced Components, or Medicine. The specific payload is chosen upon activation.</description>
+    <iconPath>UI/Commands/CallDropPods</iconPath>
+    <cooldownTicksRange>120000~180000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <targetRequired>false</targetRequired>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>0</range>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="CerebrexRebalance.CompProperties_AbilitySupplyDrop">
+      </li>
+    </comps>
+  </AbilityDef>
+</Defs>

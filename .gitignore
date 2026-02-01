@@ -1,0 +1,33 @@
+# RimWorld Mod Development - .gitignore
+
+# Build artifacts (НЕ нужны в репозитории)
+Source/bin/
+Source/obj/
+*.user
+*.suo
+*.cache
+.vs/
+
+# Исходный код C# (опционально — включаем для прозрачности)
+# Раскомментируй, если хочешь скрыть исходники:
+# Source/
+
+# Build scripts (не нужны конечным пользователям)
+Build.ps1
+SimpleBuild.bat
+
+# Локальные файлы/тесты
+*.tmp
+*.bak
+*.log
+
+# OS файлы
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*~
