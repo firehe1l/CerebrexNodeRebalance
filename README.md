@@ -43,6 +43,7 @@ Automatically sets the Mechanoid faction to **Neutral** upon:
 ## ⚙️ Requirements
 
 - **RimWorld**: 1.6.4633+
+- **Harmony**
 - **DLC Required**:
   - Biotech
   - Odyssey
