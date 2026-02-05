@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
+  <!-- Supply Drop - Now targeted (click to choose drop location) -->
   <AbilityDef>
     <defName>Cerebrex_SupplyDrop</defName>
     <label>request mechanoid supply drop</label>
-    <description>Request a drop pod containing mechanoid crafting resources. You can choose between Steel, Plasteel, Components, Advanced Components, or Medicine. The specific payload is chosen upon activation.</description>
+    <description>Request a drop pod containing mechanoid crafting resources at a targeted location. You can choose between Steel, Plasteel, Components, Advanced Components, or Medicine. Click to select the drop zone.</description>
     <iconPath>UI/Commands/CallDropPods</iconPath>
     <cooldownTicksRange>120000~180000</cooldownTicksRange>
     <hostile>false</hostile>
-    <targetRequired>false</targetRequired>
+    
+    <!-- Now requires targeting -->
+    <targetRequired>true</targetRequired>
+    
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
-      <range>0</range>
+      <range>45</range>
+      <warmupTime>0.5</warmupTime>
       <targetParams>
-        <canTargetSelf>true</canTargetSelf>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetPawns>false</canTargetPawns>
+        <canTargetBuildings>false</canTargetBuildings>
       </targetParams>
     </verbProperties>
+    
     <comps>
       <li Class="CerebrexRebalance.CompProperties_AbilitySupplyDrop">
       </li>

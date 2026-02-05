@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Signal Amplifier - Quest item for building the Relay -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>Cerebrex_SignalAmplifier</defName>
+    <label>signal amplifier</label>
+    <description>A mysterious archotech device recovered from an ancient mechanoid complex. It pulses with an eerie green light and can amplify signals across vast distances. Required to construct an Archotech Relay.</description>
+    
+    <graphicData>
+      <texPath>Things/Item/Special/AIPersonaCore</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <!-- Lime green tint -->
+      <color>(0.4, 1.0, 0.4)</color>
+    </graphicData>
+    
+    <resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Metal_Drop</soundDrop>
+    
+    <stackLimit>1</stackLimit>
+    <useHitPoints>true</useHitPoints>
+    
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <MarketValue>5000</MarketValue>
+      <Mass>2</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+    
+    <thingCategories>
+      <li>Artifacts</li>
+    </thingCategories>
+    
+    <tradeTags>
+      <li>ExoticMisc</li>
+    </tradeTags>
+    
+    <tradeability>None</tradeability>
+    <destroyOnDrop>false</destroyOnDrop>
+  </ThingDef>
+</Defs>

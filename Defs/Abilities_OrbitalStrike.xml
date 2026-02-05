@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Orbital Strike Ability - Like Imperial permit bombardment -->
+  <AbilityDef>
+    <defName>Cerebrex_OrbitalStrike</defName>
+    <label>orbital mechanoid strike</label>
+    <description>Call down a devastating orbital bombardment from mechanoid satellites. The strike rains down explosive projectiles in a targeted area, destroying everything in its path.</description>
+    <iconPath>UI/Commands/Bombard</iconPath>
+    
+    <!-- 1 game day cooldown -->
+    <cooldownTicksRange>60000~60000</cooldownTicksRange>
+    
+    <hostile>true</hostile>
+    <targetRequired>true</targetRequired>
+    <canUseAoeToGetTargets>false</canUseAoeToGetTargets>
+    
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>45</range>
+      <warmupTime>2.5</warmupTime>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetBuildings>true</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    
+    <comps>
+      <li Class="CerebrexRebalance.CompProperties_AbilityOrbitalStrike">
+        <explosionRadius>4.9</explosionRadius>
+        <explosionCount>8</explosionCount>
+        <durationTicks>300</durationTicks>
+      </li>
+    </comps>
+  </AbilityDef>
+</Defs>

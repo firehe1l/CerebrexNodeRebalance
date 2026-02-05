@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<loadFolders>
+  <v1.6>
+    <!-- Always load root folder -->
+    <li>/</li>
+    
+    <!-- Load Combat Extended compatibility if active -->
+    <li IfModActive="CETeam.CombatExtended">CombatExtended</li>
+  </v1.6>
+</loadFolders>

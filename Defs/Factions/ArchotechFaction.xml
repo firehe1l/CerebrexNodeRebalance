@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Archotech Faction - Hidden until first contact via Relay -->
+  <FactionDef>
+    <defName>Cerebrex_ArchotechFaction</defName>
+    <label>archotechs</label>
+    <description>An enigmatic collective of archotech intelligences that have existed since before human expansion into the stars. They communicate through mechanoid networks and offer power to those who prove worthy.</description>
+    
+    <!-- Hidden until revealed via C# -->
+    <hidden>true</hidden>
+    
+    <!-- Cannot be attacked or visited -->
+    <canMakeRandomly>false</canMakeRandomly>
+    <canSiege>false</canSiege>
+    <canStageAttacks>false</canStageAttacks>
+    <earliestRaidDays>99999</earliestRaidDays>
+    
+    <!-- Relation settings -->
+    <permanentEnemy>false</permanentEnemy>
+    <mustStartOneEnemy>false</mustStartOneEnemy>
+    <categoryTag>Special</categoryTag>
+    
+    <!-- Visual styling - lime green -->
+    <factionNameMaker>NamerFactionAncient</factionNameMaker>
+    <settlementNameMaker>NamerSettlementAncient</settlementNameMaker>
+    <colorSpectrum>
+      <li>(0.4, 1.0, 0.4)</li>
+      <li>(0.2, 0.9, 0.2)</li>
+    </colorSpectrum>
+    
+    <!-- No leader, no pawns -->
+    <humanlikeFaction>false</humanlikeFaction>
+    <generateGoodwillDailyForPlayer>false</generateGoodwillDailyForPlayer>
+    <autoFlee>false</autoFlee>
+    
+    <!-- Relations start neutral when revealed -->
+    <startingGoodwill>
+      <min>0</min>
+      <max>0</max>
+    </startingGoodwill>
+    <naturalColonyGoodwill>
+      <min>0</min>
+      <max>0</max>
+    </naturalColonyGoodwill>
+  </FactionDef>
+</Defs>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Quest: Relay Coordinates - Triggered when Cerebrex Node equipped -->
+  <QuestScriptDef>
+    <defName>Cerebrex_RelayCoordinatesQuest</defName>
+    <root Class="QuestNode_Sequence">
+      <nodes>
+        <!-- Set quest name -->
+        <li Class="QuestNode_GetMap">
+          <storeAs>map</storeAs>
+        </li>
+        
+        <!-- Generate site -->
+        <li Class="QuestNode_GenerateSite">
+          <storeAs>site</storeAs>
+          <sitePartsParams>
+            <li>
+              <parms>
+                <threatPoints>$points</threatPoints>
+              </parms>
+              <factionOf>$faction</factionOf>
+              <sitePartDef>AncientComplex</sitePartDef>
+            </li>
+          </sitePartsParams>
+          <tile>$tile</tile>
+          <validateTile>true</validateTile>
+          <createWorldObject>true</createWorldObject>
+        </li>
+        
+        <!-- Set quest description -->
+        <li Class="QuestNode_Set">
+          <name>label</name>
+          <value>Relay Coordinates</value>
+        </li>
+        <li Class="QuestNode_Set">
+          <name>description</name>
+          <value>The Cerebrex Node has transmitted coordinates to an ancient mechanoid complex. Intelligence suggests a Signal Amplifier may be found within - essential for constructing an Archotech Relay.\n\nThe site is defended by hostile mechanoids. Prepare accordingly.</value>
+        </li>
+        
+        <!-- End conditions -->
+        <li Class="QuestNode_End">
+          <outcome>Success</outcome>
+          <inSignal>site.AllEnemiesDefeated</inSignal>
+        </li>
+        <li Class="QuestNode_End">
+          <outcome>Fail</outcome>
+          <inSignal>site.MapRemoved</inSignal>
+        </li>
+      </nodes>
+    </root>
+    
+    <questNameRules>
+      <rulesStrings>
+        <li>questName->Relay Coordinates</li>
+      </rulesStrings>
+    </questNameRules>
+    
+    <questDescriptionRules>
+      <rulesStrings>
+        <li>questDescription->Signal Amplifier coordinates received. Retrieve the device from an ancient mechanoid complex.</li>
+      </rulesStrings>
+    </questDescriptionRules>
+    
+    <epicParent>false</epicParent>
+    <declineAffectGoodwill>false</declineAffectGoodwill>
+    <defaultChallengeRating>3</defaultChallengeRating>
+  </QuestScriptDef>
+</Defs>

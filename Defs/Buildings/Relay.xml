@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Archotech Relay - Communication console for Archotech faction -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>Cerebrex_Relay</defName>
+    <label>archotech relay</label>
+    <description>A powerful communication device that can contact archotech intelligences across the galaxy. Only colonists wearing a Cerebrex Node can interface with this machine. Requires a Signal Amplifier to construct.</description>
+    
+    <graphicData>
+      <texPath>Things/Building/Misc/CommsConsole</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <!-- Lime green tint -->
+      <color>(0.4, 1.0, 0.4)</color>
+      <drawSize>(3,2)</drawSize>
+      <damageData>
+        <rect>(0.1,0,2.8,1.8)</rect>
+      </damageData>
+    </graphicData>
+    
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>42</pathCost>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>0.5</fillPercent>
+    
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <WorkToBuild>12000</WorkToBuild>
+      <Flammability>0.1</Flammability>
+      <Mass>50</Mass>
+    </statBases>
+    
+    <size>(3,2)</size>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <hasInteractionCell>true</hasInteractionCell>
+    
+    <costList>
+      <Steel>200</Steel>
+      <ComponentIndustrial>50</ComponentIndustrial>
+      <ComponentSpacer>10</ComponentSpacer>
+      <Cerebrex_SignalAmplifier>1</Cerebrex_SignalAmplifier>
+    </costList>
+    
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>500</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Glower">
+        <glowRadius>6</glowRadius>
+        <glowColor>(102, 255, 102, 0)</glowColor>
+      </li>
+    </comps>
+    
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Medium</destroySound>
+    </building>
+    
+    <designationCategory>Misc</designationCategory>
+    <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+    
+    <researchPrerequisites>
+      <li>MicroelectronicsBasics</li>
+    </researchPrerequisites>
+    
+    <placeWorkers>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+  </ThingDef>
+</Defs>

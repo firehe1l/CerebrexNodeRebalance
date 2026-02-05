@@ -23,6 +23,7 @@
     <xpath>/Defs/ThingDef[defName="Apparel_CerebrexNode"]/apparel/abilities</xpath>
     <value>
       <li>Cerebrex_SupplyDrop</li>
+      <li>Cerebrex_OrbitalStrike</li>
     </value>
   </Operation>
 
