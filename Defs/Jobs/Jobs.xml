@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Job for using Archotech Relay -->
+  <JobDef>
+    <defName>Cerebrex_UseRelay</defName>
+    <driverClass>CerebrexRebalance.JobDriver_UseRelay</driverClass>
+    <reportString>contacting archotechs.</reportString>
+    <casualInterruptible>true</casualInterruptible>
+    <playerInterruptible>true</playerInterruptible>
+  </JobDef>
+</Defs>

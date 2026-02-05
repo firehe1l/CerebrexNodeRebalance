@@ -26,13 +26,19 @@ namespace CerebrexRebalance
     /// </summary>
     public class CompAbilityEffect_OrbitalStrike : CompAbilityEffect
     {
-        private new CompProperties_AbilityOrbitalStrike Props => (CompProperties_AbilityOrbitalStrike)this.props;
+        private new CompProperties_AbilityOrbitalStrike Props
+        {
+            get
+            {
+                return (CompProperties_AbilityOrbitalStrike)this.props;
+            }
+        }
 
         public override void Apply(LocalTargetInfo target, LocalTargetInfo dest)
         {
             base.Apply(target, dest);
 
-            if (!target.HasThing && !target.Cell.IsValid || this.parent?.pawn?.Map == null)
+            if (!target.HasThing && !target.Cell.IsValid || this.parent == null || this.parent.pawn == null || this.parent.pawn.Map == null)
             {
                 return;
             }
@@ -53,7 +59,7 @@ namespace CerebrexRebalance
             }
             catch (Exception ex)
             {
-                Log.Error($"[CerebrexRebalance] Error in orbital strike: {ex.Message}");
+                Log.Error("[CerebrexRebalance] Error in orbital strike: " + ex.Message);
             }
         }
 
@@ -62,13 +68,15 @@ namespace CerebrexRebalance
             // Use vanilla Bombardment class
             Bombardment bombardment = (Bombardment)GenSpawn.Spawn(ThingDefOf.Bombardment, targetCell, map);
             
-            if (bombardment != null)
-            {
-                bombardment.duration = Props.durationTicks;
-                bombardment.instigator = this.parent.pawn;
-                bombardment.weaponDef = null;
-                bombardment.StartStrike();
-            }
+                if (bombardment != null)
+                {
+                    // Calculate duration to get exactly the number of explosions requested
+                    // Vanilla Bombardment ticks every 18 ticks (Bombardment.BombIntervalTicks)
+                    bombardment.duration = Props.explosionCount * 18;
+                    bombardment.instigator = this.parent.pawn;
+                    bombardment.weaponDef = null;
+                    bombardment.StartStrike();
+                }
         }
 
         public override bool CanApplyOn(LocalTargetInfo target, LocalTargetInfo dest)
@@ -79,7 +87,7 @@ namespace CerebrexRebalance
             }
 
             // Check if target is valid map location
-            if (this.parent?.pawn?.Map == null)
+            if (this.parent == null || this.parent.pawn == null || this.parent.pawn.Map == null)
             {
                 return false;
             }
@@ -88,9 +96,13 @@ namespace CerebrexRebalance
             IntVec3 cell = target.Cell;
 
             // Cannot target under thick roof
-            if (cell.Roofed(map) && map.roofGrid.RoofAt(cell)?.isThickRoof == true)
+            if (cell.Roofed(map))
             {
-                return false;
+                RoofDef roof = map.roofGrid.RoofAt(cell);
+                if (roof != null && roof.isThickRoof)
+                {
+                    return false;
+                }
             }
 
             return true;
@@ -120,7 +132,7 @@ namespace CerebrexRebalance
 
         public override string ExtraLabelMouseAttachment(LocalTargetInfo target)
         {
-            if (this.parent?.pawn?.Map == null)
+            if (this.parent == null || this.parent.pawn == null || this.parent.pawn.Map == null)
             {
                 return null;
             }
@@ -128,9 +140,13 @@ namespace CerebrexRebalance
             Map map = this.parent.pawn.Map;
             IntVec3 cell = target.Cell;
 
-            if (cell.Roofed(map) && map.roofGrid.RoofAt(cell)?.isThickRoof == true)
+            if (cell.Roofed(map))
             {
-                return "Cannot target under thick roof";
+                RoofDef roof = map.roofGrid.RoofAt(cell);
+                if (roof != null && roof.isThickRoof)
+                {
+                    return "Cannot target under thick roof";
+                }
             }
 
             return null;

@@ -23,6 +23,9 @@ namespace CerebrexRebalance
         public static AbilityDef Cerebrex_SupplyDrop;
         public static AbilityDef Cerebrex_OrbitalStrike;
 
+        // Jobs
+        public static JobDef Cerebrex_UseRelay;
+
         // Apparel (vanilla Odyssey)
         [MayRequire("Ludeon.RimWorld.Odyssey")]
         public static ThingDef Apparel_CerebrexNode;

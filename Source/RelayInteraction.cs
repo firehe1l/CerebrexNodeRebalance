@@ -67,7 +67,13 @@ namespace CerebrexRebalance
         private Faction faction;
         private Pawn negotiator;
 
-        public override Vector2 InitialSize => new Vector2(600f, 500f);
+        public override Vector2 InitialSize
+        {
+            get
+            {
+                return new Vector2(600f, 500f);
+            }
+        }
 
         public Dialog_Negotiate(Faction faction, Pawn negotiator)
         {
@@ -87,7 +93,7 @@ namespace CerebrexRebalance
             float y = 50f;
 
             // Faction info
-            Widgets.Label(new UnityEngine.Rect(0, y, inRect.width, 30f), $"Connection established via {negotiator.LabelShort}");
+            Widgets.Label(new UnityEngine.Rect(0, y, inRect.width, 30f), "Connection established via " + negotiator.LabelShort);
             y += 35f;
 
             // Separator
@@ -109,7 +115,7 @@ namespace CerebrexRebalance
             if (faction != null)
             {
                 FactionRelationKind relation = faction.RelationKindWith(Faction.OfPlayer);
-                string relationText = $"Current standing: {relation}";
+                string relationText = "Current standing: " + relation;
                 Widgets.Label(new UnityEngine.Rect(0, y, inRect.width, 30f), relationText);
             }
 

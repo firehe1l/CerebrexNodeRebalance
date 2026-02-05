@@ -7,13 +7,8 @@
     <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
     <approachOrderString>Approach {0}</approachOrderString>
     <wantsThreatPoints>true</wantsThreatPoints>
-    <workerClass>SitePartWorker_ItemStash</workerClass>
+    <workerClass>CerebrexRebalance.SitePartWorker_SpawnAmplifier</workerClass>
   </SitePartDef>
 
-  <!-- GenStep to spawn Signal Amplifier in maps -->
-  <GenStepDef>
-    <defName>Cerebrex_SpawnSignalAmplifier</defName>
-    <order>700</order>
-    <genStep Class="CerebrexRebalance.GenStep_SpawnSignalAmplifier" />
-  </GenStepDef>
+
 </Defs>

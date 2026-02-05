@@ -23,7 +23,7 @@ namespace CerebrexRebalance
         {
             base.Apply(target, dest);
 
-            if (this.parent?.pawn?.Map == null)
+            if (this.parent == null || this.parent.pawn == null || this.parent.pawn.Map == null)
             {
                 return;
             }
@@ -75,7 +75,7 @@ namespace CerebrexRebalance
             }
             catch (Exception ex)
             {
-                Log.Error($"[CerebrexRebalance] Error spawning supply drop: {ex.Message}");
+                Log.Error("[CerebrexRebalance] Error spawning supply drop: " + ex.Message);
             }
         }
 
@@ -86,7 +86,7 @@ namespace CerebrexRebalance
                 return false;
             }
 
-            if (this.parent?.pawn?.Map == null)
+            if (this.parent == null || this.parent.pawn == null || this.parent.pawn.Map == null)
             {
                 return false;
             }

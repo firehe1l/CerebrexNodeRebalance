@@ -53,6 +53,11 @@
         <glowRadius>6</glowRadius>
         <glowColor>(102, 255, 102, 0)</glowColor>
       </li>
+      <!-- Custom usable component for Cerebrex interaction -->
+      <li Class="CerebrexRebalance.CompProperties_RelayUsable">
+        <useLabel>Contact Archotechs</useLabel>
+        <useDuration>120</useDuration>
+      </li>
     </comps>
     
     <building>

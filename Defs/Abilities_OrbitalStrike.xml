@@ -5,10 +5,10 @@
     <defName>Cerebrex_OrbitalStrike</defName>
     <label>orbital mechanoid strike</label>
     <description>Call down an orbital bombardment from mechanoid satellites. Highly destructive but cannot target areas under thick roofs.</description>
-    <iconPath>UI/Commands/BombardmentTargeter</iconPath>
+    <iconPath>UI/Abilities/Bombardment</iconPath>
     
-    <!-- 1 game day cooldown -->
-    <cooldownTicksRange>60000~60000</cooldownTicksRange>
+    <!-- 5 game days cooldown -->
+    <cooldownTicksRange>300000~300000</cooldownTicksRange>
     
     <hostile>true</hostile>
     <targetRequired>true</targetRequired>
@@ -16,7 +16,7 @@
     
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
-      <range>45</range>
+      <range>60</range>
       <warmupTime>2.5</warmupTime>
       <targetParams>
         <canTargetLocations>true</canTargetLocations>
@@ -29,7 +29,7 @@
     <comps>
       <li Class="CerebrexRebalance.CompProperties_AbilityOrbitalStrike">
         <explosionRadius>4.9</explosionRadius>
-        <explosionCount>8</explosionCount>
+        <explosionCount>4</explosionCount>
         <durationTicks>300</durationTicks>
       </li>
     </comps>
