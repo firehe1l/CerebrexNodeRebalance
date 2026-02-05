@@ -1,46 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  <!-- Archotech Faction - Hidden until first contact via Relay -->
   <FactionDef>
     <defName>Cerebrex_ArchotechFaction</defName>
     <label>archotechs</label>
     <description>An enigmatic collective of archotech intelligences that have existed since before human expansion into the stars. They communicate through mechanoid networks and offer power to those who prove worthy.</description>
     
-    <!-- Hidden until revealed via C# -->
+    <!-- Hidden until player makes contact -->
     <hidden>true</hidden>
     
-    <!-- Cannot be attacked or visited -->
+    <!-- Basic faction properties -->
     <canMakeRandomly>false</canMakeRandomly>
     <canSiege>false</canSiege>
     <canStageAttacks>false</canStageAttacks>
     <earliestRaidDays>99999</earliestRaidDays>
-    
-    <!-- Relation settings -->
     <permanentEnemy>false</permanentEnemy>
     <mustStartOneEnemy>false</mustStartOneEnemy>
-    <categoryTag>Special</categoryTag>
     
-    <!-- Visual styling - lime green -->
-    <factionNameMaker>NamerFactionAncient</factionNameMaker>
-    <settlementNameMaker>NamerSettlementAncient</settlementNameMaker>
+    <categoryTag>Special</categoryTag>
+    <techLevel>Archotech</techLevel>
+    
+    <!-- Naming - use vanilla namers -->
+    <factionNameMaker>NamerFactionOutlander</factionNameMaker>
+    <settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>
+    
+    <!-- Lime green color scheme -->
     <colorSpectrum>
       <li>(0.4, 1.0, 0.4)</li>
       <li>(0.2, 0.9, 0.2)</li>
     </colorSpectrum>
     
-    <!-- No leader, no pawns -->
+    <!-- Non-humanlike faction -->
     <humanlikeFaction>false</humanlikeFaction>
-    <generateGoodwillDailyForPlayer>false</generateGoodwillDailyForPlayer>
     <autoFlee>false</autoFlee>
     
-    <!-- Relations start neutral when revealed -->
-    <startingGoodwill>
-      <min>0</min>
-      <max>0</max>
-    </startingGoodwill>
-    <naturalColonyGoodwill>
-      <min>0</min>
-      <max>0</max>
-    </naturalColonyGoodwill>
+    <!-- Required: raid loot curve (copied from Mechanoids) -->
+    <raidLootValueFromPointsCurve>
+      <points>
+        <li>(35,     15)</li>
+        <li>(100,   120)</li>
+        <li>(1000,  500)</li>
+        <li>(2000,  800)</li>
+        <li>(4000, 1000)</li>
+      </points>
+    </raidLootValueFromPointsCurve>
   </FactionDef>
 </Defs>

@@ -6,12 +6,8 @@
     <label>signal amplifier cache</label>
     <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
     <approachOrderString>Approach {0}</approachOrderString>
-    <arrivalModeForRaidingMessage>arrive by</arrivalModeForRaidingMessage>
     <wantsThreatPoints>true</wantsThreatPoints>
     <workerClass>SitePartWorker_ItemStash</workerClass>
-    
-    <arrivedLetterLabel>Arrived</arrivedLetterLabel>
-    <arrivedLetterDef>PositiveEvent</arrivedLetterDef>
   </SitePartDef>
 
   <!-- GenStep to spawn Signal Amplifier in maps -->

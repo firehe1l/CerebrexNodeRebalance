@@ -10,7 +10,7 @@
           <storeAs>map</storeAs>
         </li>
         
-        <!-- Generate site -->
+        <!-- Generate Ancient Complex site -->
         <li Class="QuestNode_GenerateSite">
           <storeAs>site</storeAs>
           <sitePartsParams>
@@ -23,8 +23,6 @@
             </li>
           </sitePartsParams>
           <tile>$tile</tile>
-          <validateTile>true</validateTile>
-          <createWorldObject>true</createWorldObject>
         </li>
         
         <!-- Set quest description -->
@@ -60,9 +58,5 @@
         <li>questDescription->Signal Amplifier coordinates received. Retrieve the device from an ancient mechanoid complex.</li>
       </rulesStrings>
     </questDescriptionRules>
-    
-    <epicParent>false</epicParent>
-    <declineAffectGoodwill>false</declineAffectGoodwill>
-    <defaultChallengeRating>3</defaultChallengeRating>
   </QuestScriptDef>
 </Defs>

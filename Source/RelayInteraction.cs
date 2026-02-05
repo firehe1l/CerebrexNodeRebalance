@@ -12,10 +12,15 @@ namespace CerebrexRebalance
     /// Only colonists with Cerebrex Node can use it.
     /// Reveals hidden Archotech faction on first use.
     /// </summary>
-    [HarmonyPatch(typeof(FloatMenuMakerMap), "AddHumanlikeOrders")]
+    [HarmonyPatch]
     public static class RelayInteraction_Patch
     {
         private static bool archotechRevealed = false;
+
+        static System.Reflection.MethodBase TargetMethod()
+        {
+            return AccessTools.Method(typeof(FloatMenuMakerMap), "AddHumanlikeOrders");
+        }
 
         [HarmonyPostfix]
         public static void Postfix(Vector3 clickPos, Pawn pawn, List<FloatMenuOption> opts)

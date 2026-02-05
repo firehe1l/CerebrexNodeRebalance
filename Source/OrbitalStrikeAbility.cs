@@ -32,7 +32,7 @@ namespace CerebrexRebalance
         {
             base.Apply(target, dest);
 
-            if (target.Cell == null || this.parent?.pawn?.Map == null)
+            if (!target.HasThing && !target.Cell.IsValid || this.parent?.pawn?.Map == null)
             {
                 return;
             }
@@ -94,6 +94,28 @@ namespace CerebrexRebalance
             }
 
             return true;
+        }
+
+        public override bool GizmoDisabled(out string reason)
+        {
+            Pawn pawn = parent.pawn;
+            if (pawn == null)
+            {
+                reason = "No pawn";
+                return true;
+            }
+
+            // The original snippet had a syntax error here.
+            // GizmoDisabled typically checks general conditions, not target-specific ones.
+            // Assuming the intent was to check if the pawn is on a map.
+            if (pawn.Map == null)
+            {
+                reason = "Cannot use without a map";
+                return true;
+            }
+
+            reason = null;
+            return false;
         }
 
         public override string ExtraLabelMouseAttachment(LocalTargetInfo target)
