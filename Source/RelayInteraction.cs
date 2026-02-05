@@ -8,104 +8,13 @@ using UnityEngine;
 namespace CerebrexRebalance
 {
     /// <summary>
-    /// Handles interaction with Archotech Relay building.
-    /// Only colonists with Cerebrex Node can use it.
-    /// Reveals hidden Archotech faction on first use.
+    /// Static utility class for Archotech faction revelation.
     /// </summary>
-    [HarmonyPatch]
-    public static class RelayInteraction_Patch
+    public static class ArchotechFactionManager
     {
         private static bool archotechRevealed = false;
 
-        static System.Reflection.MethodBase TargetMethod()
-        {
-            return AccessTools.Method(typeof(FloatMenuMakerMap), "AddHumanlikeOrders");
-        }
-
-        [HarmonyPostfix]
-        public static void Postfix(Vector3 clickPos, Pawn pawn, List<FloatMenuOption> opts)
-        {
-            if (pawn == null || opts == null || pawn.Map == null)
-            {
-                return;
-            }
-
-            // Find Relay building at click position
-            IntVec3 cell = IntVec3.FromVector3(clickPos);
-            List<Thing> thingsAtCell = cell.GetThingList(pawn.Map);
-
-            Thing relay = null;
-            foreach (Thing thing in thingsAtCell)
-            {
-                if (thing.def?.defName == "Cerebrex_Relay")
-                {
-                    relay = thing;
-                    break;
-                }
-            }
-
-            if (relay == null)
-            {
-                return;
-            }
-
-            // Check if relay is powered
-            CompPowerTrader powerComp = relay.TryGetComp<CompPowerTrader>();
-            if (powerComp != null && !powerComp.PowerOn)
-            {
-                opts.Add(new FloatMenuOption("Call Archotech (no power)", null));
-                return;
-            }
-
-            // Check if pawn has Cerebrex Node
-            if (!HasCerebrexNode(pawn))
-            {
-                opts.Add(new FloatMenuOption("Call Archotech (requires Cerebrex Node)", null));
-                return;
-            }
-
-            // Add interaction option
-            opts.Add(new FloatMenuOption("Call Archotech", () => OpenArchotechDialog(pawn, relay)));
-        }
-
-        private static bool HasCerebrexNode(Pawn pawn)
-        {
-            if (pawn?.apparel?.WornApparel == null)
-            {
-                return false;
-            }
-
-            foreach (Apparel apparel in pawn.apparel.WornApparel)
-            {
-                if (apparel.def?.defName == "Apparel_CerebrexNode")
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private static void OpenArchotechDialog(Pawn pawn, Thing relay)
-        {
-            // Reveal faction if first contact
-            RevealArchotechFaction();
-
-            // Get faction
-            Faction archotechFaction = Find.FactionManager.FirstFactionOfDef(CerebrexDefOf.Cerebrex_ArchotechFaction);
-
-            if (archotechFaction == null)
-            {
-                Log.Error("[CerebrexRebalance] Archotech faction not found!");
-                Messages.Message("Unable to establish connection.", MessageTypeDefOf.RejectInput);
-                return;
-            }
-
-            // Open faction dialog
-            Find.WindowStack.Add(new Dialog_Negotiate(archotechFaction, pawn));
-        }
-
-        private static void RevealArchotechFaction()
+        public static void RevealArchotechFaction()
         {
             if (archotechRevealed)
             {
@@ -131,10 +40,8 @@ namespace CerebrexRebalance
 
             if (archotechFaction != null)
             {
-                // Set faction as not hidden (mark as discovered)
                 archotechRevealed = true;
 
-                // Send notification
                 Find.LetterStack.ReceiveLetter(
                     "First Contact",
                     "You have established contact with the Archotechs. An ancient intelligence now acknowledges your existence.",
@@ -145,9 +52,6 @@ namespace CerebrexRebalance
             }
         }
 
-        /// <summary>
-        /// Reset state for new game.
-        /// </summary>
         public static void ResetState()
         {
             archotechRevealed = false;
@@ -218,15 +122,15 @@ namespace CerebrexRebalance
     }
 
     /// <summary>
-    /// Reset relay state on new game.
+    /// Reset faction state on new game.
     /// </summary>
     [HarmonyPatch(typeof(Game), "InitNewGame")]
-    public static class Game_InitNewGame_RelayClear_Patch
+    public static class Game_InitNewGame_FactionClear_Patch
     {
         [HarmonyPostfix]
         public static void Postfix()
         {
-            RelayInteraction_Patch.ResetState();
+            ArchotechFactionManager.ResetState();
         }
     }
 }

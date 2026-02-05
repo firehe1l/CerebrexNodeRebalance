@@ -5,7 +5,7 @@
     <defName>Cerebrex_OrbitalStrike</defName>
     <label>orbital mechanoid strike</label>
     <description>Call down an orbital bombardment from mechanoid satellites. Highly destructive but cannot target areas under thick roofs.</description>
-    <iconPath>UI/Abilities/OrbitalStrike</iconPath>
+    <iconPath>UI/Commands/BombardmentTargeter</iconPath>
     
     <!-- 1 game day cooldown -->
     <cooldownTicksRange>60000~60000</cooldownTicksRange>
